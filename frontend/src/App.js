@@ -1,22 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactFlow, { addEdge, applyNodeChanges, applyEdgeChanges, MiniMap, Controls, Background } from 'reactflow';
 import 'reactflow/dist/style.css';
 import './App.css';
 
-const initialNodes = [
-  { id: '1', type: 'input', data: { label: 'Input Node' }, position: { x: 250, y: 5 } },
-  { id: '2', data: { label: 'Default Node' }, position: { x: 100, y: 100 } },
-  { id: '3', data: { label: 'Output Node' }, position: { x: 400, y: 100 } },
-];
-
-const initialEdges = [
-  { id: 'e1-2', source: '1', target: '2', animated: true },
-  { id: 'e2-3', source: '2', target: '3' },
-];
-
 const App = () => {
-  const [nodes, setNodes] = React.useState(initialNodes);
-  const [edges, setEdges] = React.useState(initialEdges);
+  const [nodes, setNodes] = React.useState([]);
+  const [edges, setEdges] = React.useState([]);
+
+  useEffect(() => {
+    fetch('/api/graph')
+      .then(response => response.json())
+      .then(data => {
+        setNodes(data.nodes);
+        setEdges(data.edges);
+      })
+      .catch(error => console.error('Error fetching graph data:', error));
+  }, []);
 
   const onNodesChange = React.useCallback(
     (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
