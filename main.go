@@ -7,10 +7,11 @@ import (
 )
 
 type Node struct {
-	ID       string                 `json:"id"`
-	Type     string                 `json:"type,omitempty"`
-	Data     map[string]interface{} `json:"data"`
-	Position map[string]float64     `json:"position"`
+	ID        string                 `json:"id"`
+	Type      string                 `json:"type,omitempty"`
+	Data      map[string]interface{} `json:"data"`
+	Position  map[string]float64     `json:"position"`
+	ClassName string                 `json:"className"`
 }
 
 type Edge struct {
@@ -27,9 +28,9 @@ type GraphData struct {
 
 func graphHandler(w http.ResponseWriter, r *http.Request) {
 	nodes := []Node{
-		{ID: "1", Type: "input", Data: map[string]interface{}{"label": "Input Node"}, Position: map[string]float64{"x": 250, "y": 5}},
-		{ID: "2", Data: map[string]interface{}{"label": "Default Node"}, Position: map[string]float64{"x": 100, "y": 100}},
-		{ID: "3", Data: map[string]interface{}{"label": "Output Node"}, Position: map[string]float64{"x": 400, "y": 100}},
+		{ID: "1", Type: "input", Data: map[string]interface{}{"label": "Input Node"}, Position: map[string]float64{"x": 250, "y": 5}, ClassName: "react-flow__node-input"},
+		{ID: "2", Data: map[string]interface{}{"label": "Default Node"}, Position: map[string]float64{"x": 100, "y": 100}, ClassName: "react-flow__node-default"},
+		{ID: "3", Data: map[string]interface{}{"label": "Output Node"}, Position: map[string]float64{"x": 400, "y": 100}, ClassName: "react-flow__node-output"},
 	}
 	edges := []Edge{
 		{ID: "e1-2", Source: "1", Target: "2", Animated: true},

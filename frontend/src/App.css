@@ -1,3 +1,4 @@
+/* General reset and layout */
 html,
 body,
 #root,
@@ -6,11 +7,110 @@ body,
   margin: 0;
   padding: 0;
   overflow: hidden;
+  background-color: #1e1e2f;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .App {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #f0f0f0;
+}
+
+/* Styling for React Flow */
+.react-flow__node {
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.react-flow__node-default {
+  background: linear-gradient(135deg, #2a2a72, #009ffd);
+  border: 2px solid #00aaff;
+  color: #ffffff;
+}
+
+.react-flow__node:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Node content */
+.react-flow__node .react-flow__handle {
+  width: 10px;
+  height: 10px;
+  background-color: #ffffff;
+  border: 2px solid #00aaff;
+}
+
+.react-flow__node-input {
+  border: 2px solid #ff5e62;
+  background: linear-gradient(135deg, #ff9966, #ff5e62);
+}
+
+.react-flow__node-output {
+  border: 2px solid #24fe41;
+  background: linear-gradient(135deg, #24fe41, #0fefca);
+}
+
+.react-flow__node .react-flow__handle-left,
+.react-flow__node .react-flow__handle-right {
+  background-color: #ffffff;
+  border-radius: 50%;
+}
+
+/* Edges */
+.react-flow__edge-path {
+  stroke: #00aaff;
+  stroke-width: 2px;
+}
+
+.react-flow__edge-path.animated {
+  stroke-dasharray: 5;
+}
+
+/* Background */
+.react-flow__background {
+  background-color: #1e1e2f;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* MiniMap */
+.react-flow__minimap {
+  background: #2b2b40;
+  border: 1px solid #333;
+}
+
+.react-flow__minimap-mask {
+  fill: rgba(255, 255, 255, 0.1);
+}
+
+.react-flow__minimap-node {
+  fill: #00aaff;
+}
+
+/* Controls */
+.react-flow__controls {
+  background-color: #2b2b40;
+  color: #ffffff;
+}
+
+.react-flow__controls-button {
+  background-color: #3b3b50;
+  border: 1px solid #444;
+  color: #ffffff;
+}
+
+.react-flow__controls-button:hover {
+  background-color: #444;
+}
+
+/* Custom node label */
+.react-flow__node .label {
+  padding: 5px 10px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 3px;
+  color: #ffffff;
+  font-size: 14px;
 }
